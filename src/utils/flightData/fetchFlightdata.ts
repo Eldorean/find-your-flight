@@ -1,6 +1,6 @@
 import { FlightsResponse } from "./FlightInfo.types";
 
-const fetchFlightData = new Promise<FlightsResponse>((resolve, reject) => {
+const fetchFlightData = () => new Promise<FlightsResponse>((resolve, reject) => {
   fetch(`${window.location.origin}/flights.json`)
     .then((response) => {
       if (!response.ok) {

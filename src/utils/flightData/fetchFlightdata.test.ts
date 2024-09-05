@@ -7,24 +7,20 @@ describe("fetchFlightData", () => {
   });
 
   it("should fetch flight data successfully", async () => {
-    const mockResponse = { flights: [] };
-    vi.spyOn(global, "fetch").mockResolvedValueOnce(
-      new Response(JSON.stringify(mockResponse), { status: 200 })
+    const mockResponse = { flights: undefined };
+    vi.spyOn(global, "fetch").mockImplementation(
+      vi.fn(() => Promise.resolve(new Response(JSON.stringify(mockResponse), { status: 200 })))
     );
 
-    fetchFlightData.then((response) => {
-      expect(response).toEqual(mockResponse);
-    });
+    expect(fetchFlightData()).resolves.toEqual(mockResponse);
   });
 
   it("should reject with an error message if fetching fails", async () => {
-    vi.spyOn(global, "fetch").mockResolvedValueOnce(
-      new Response(null, { status: 200 })
+    vi.spyOn(global, "fetch").mockImplementation(
+      vi.fn(() => Promise.resolve(new Response(JSON.stringify({}), { status: 404 })))
     );
 
-    fetchFlightData.catch((response) => {
-      expect(response).rejects.toEqual("Failed to fetch data");
-    });
+    expect(fetchFlightData()).rejects.toThrow("Failed to fetch data");
   });
 });
 
