@@ -9,6 +9,7 @@ type TextInputProps = {
 
 const TextInput = ({ placeholder, value, onChange }: TextInputProps) => {
   const [inputValue, setInputValue] = useState(value);
+  
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     setInputValue(text);
