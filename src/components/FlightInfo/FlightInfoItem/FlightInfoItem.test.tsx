@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import FlightInfoItem from './FlightInfoItem';
 
-test('renders flight info correctly', () => {
+it('renders flight info correctly', () => {
   const flightNumber = 'ABC123';
   const flightIdentifier = 'ABC';
   const airport = 'JFK';

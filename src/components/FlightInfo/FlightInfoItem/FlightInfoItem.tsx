@@ -1,4 +1,4 @@
-import { FlightInfoType } from "../../../utils/fetchFlightData/FlightInfo.types";
+import { FlightInfoType } from "../../../utils/flightData/FlightInfo.types";
 import "./FlightInfoItem.css";
 import "../FlightInfo.css";
 
