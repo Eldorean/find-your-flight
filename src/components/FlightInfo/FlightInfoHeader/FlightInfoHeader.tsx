@@ -1,12 +1,16 @@
 import "./FlightInfoHeader.css"
 
-const FlightInfoHeader = () => (
+type FlightInfoHeaderProps = {
+  onSort: (key: 'date' | 'expectedTime') => void;
+};
+
+const FlightInfoHeader = ({onSort}: FlightInfoHeaderProps) => (
   <div className='flightInfoLayout header'>
       <div>Flightnumber</div>
       <div>FlightTag </div>
       <div>Airport</div>
-      <div>date</div>
-      <div>expected time</div>
+      <div onClick={() => onSort('date')}>date</div>
+      <div onClick={() => onSort('expectedTime')}>expected time</div>
   </div>
 );
 

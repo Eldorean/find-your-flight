@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FlightInfoHeader, FlightInfoItem } from '../../../../components/FlightInfo';
 import List from '../../../../components/List/List';
 import useAsync from '../../../../hooks/useAsync';
@@ -11,11 +12,12 @@ type FlightInfoDisplayProps = {
 
 const FlightInfoDisplay = ({ query }: FlightInfoDisplayProps) => {
   const {loading, value} = useAsync(fetchFlightData);
+  const [sortKey, setSortKey] = useState('');
 
   const parsedFlights = (
     value?.flights
     .filter(filterByAirport(query))
-    .sort(sortBykey('airport'))
+    .sort(sortBykey(sortKey || 'airport'))
     .slice(0, 5)
     .map(flight => ({ id: flight.flightIdentifier, ...flight }))
   )
@@ -23,7 +25,7 @@ const FlightInfoDisplay = ({ query }: FlightInfoDisplayProps) => {
   return (
     loading ? <div>Loading...</div> :
     <>
-      <FlightInfoHeader />
+      <FlightInfoHeader onSort={(key)=> {setSortKey(key)}} />
       <List items={parsedFlights || []} element={FlightInfoItem} />
     </>
   );
