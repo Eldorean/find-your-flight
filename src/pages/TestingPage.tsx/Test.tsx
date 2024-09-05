@@ -1,4 +1,14 @@
+import useAsync from "../../hooks/useAsync";
+import fetchFlightData from "../../utils/fetchFlightData/fetchFlightdata";
+
 const Test = () => {
-  return (null);
+  const { loading, value } = useAsync(fetchFlightData);
+
+
+  return !loading ? (
+      <>{JSON.stringify(value)}</>
+    ) : ( 
+      <>loading</>
+    )
 }
 export default Test;

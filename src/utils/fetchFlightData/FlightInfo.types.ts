@@ -8,3 +8,7 @@ export interface FlightInfoType {
   url: string;
   score: string;
 }
+
+export interface FlightsResponse extends Record<string, unknown> {
+  flights: FlightInfoType[]
+};
