@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './Input.css';
+import './TextInput.css';
 
 type TextInputProps = {
   placeholder?: string;

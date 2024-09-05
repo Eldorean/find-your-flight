@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
-import TextInput from './Input';
+import TextInput from './TextInput';
 import { vi } from 'vitest';
 
 const onChange = vi.fn();
