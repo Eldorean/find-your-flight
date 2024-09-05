@@ -1,0 +1,11 @@
+.flightInfoLayout {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.flightInfoLayout > div{
+  padding: 8px;
+  border: 1px solid black;
+}
