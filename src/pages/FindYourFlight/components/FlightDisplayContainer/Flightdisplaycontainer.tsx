@@ -1,4 +1,4 @@
-import './Flightdisplaycontainer.css'
+import './FlightDisplayContainer.css'
 
 type FlightDisplayContainerProps = {
   children: React.ReactNode

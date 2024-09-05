@@ -1,16 +1,22 @@
 import { vi, Mock } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import FlightInfoDisplay from './FlightInfoDisplay';
-
-vi.mock('../../../../hooks/useAsync');
-
 import useAsync from '../../../../hooks/useAsync';
+
+vi.mock('../../../../utils/flightData/fetchFlightdata', () => ({
+  default: vi.fn()
+}));
+vi.mock('../../../../hooks/useAsync');
 
 describe('FlightInfoDisplay', () => {
   test('renders loading message when loading is true', () => {
+    vi.spyOn(global, "fetch").mockResolvedValueOnce(
+      new Response(null, { status: 200 })
+    );
+
     (useAsync as Mock).mockReturnValue({
       loading: true,
-      value: null,
+      value: undefined,
     });
 
     render(<FlightInfoDisplay query="" />);
@@ -18,7 +24,11 @@ describe('FlightInfoDisplay', () => {
     expect(loadingElement).toBeInTheDocument();
   });
 
-  test('renders flight info items when loading is false', async () => {
+  test('renders flight info items when loading is false', () => {
+    vi.spyOn(global, "fetch").mockResolvedValueOnce(
+      new Response(null, { status: 200 })
+    );
+
     (useAsync as Mock).mockReturnValue({
       loading: false,
       value: { flights: [{
@@ -28,8 +38,8 @@ describe('FlightInfoDisplay', () => {
         date: '2022-01-01',
       }]},
     });
-    await render(<FlightInfoDisplay query="JFK" />);
-    const loadingElement = await screen.getByText('JFK');
+    render(<FlightInfoDisplay query="JFK" />);
+    const loadingElement = screen.getByText('JFK');
     expect(loadingElement).toBeInTheDocument();
   });
 });

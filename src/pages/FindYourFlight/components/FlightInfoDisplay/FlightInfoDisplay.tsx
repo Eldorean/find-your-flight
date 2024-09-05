@@ -4,7 +4,6 @@ import useAsync from '../../../../hooks/useAsync';
 import fetchFlightData from '../../../../utils/flightData/fetchFlightdata';
 import filterByAirport from '../../../../utils/flightData/filterByAirport';
 import sortBykey from '../../../../utils/sortBykey/sortBykey';
-import './FlightInfoDisplay.css';
 
 type FlightInfoDisplayProps = {
   query?: string;

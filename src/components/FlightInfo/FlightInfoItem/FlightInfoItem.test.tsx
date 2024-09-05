@@ -6,6 +6,7 @@ it('renders flight info correctly', () => {
   const flightIdentifier = 'ABC';
   const airport = 'JFK';
   const date = '2022-01-01';
+  const expectedTime = '12:00';
 
   const { getByText } = render(
     <FlightInfoItem
@@ -13,6 +14,7 @@ it('renders flight info correctly', () => {
       flightIdentifier={flightIdentifier}
       airport={airport}
       date={date}
+      expectedTime={expectedTime}
     />
   );
 
@@ -20,4 +22,5 @@ it('renders flight info correctly', () => {
   expect(getByText(flightIdentifier)).toBeInTheDocument();
   expect(getByText(airport)).toBeInTheDocument();
   expect(getByText(date)).toBeInTheDocument();
+  expect(getByText(expectedTime)).toBeInTheDocument();
 });

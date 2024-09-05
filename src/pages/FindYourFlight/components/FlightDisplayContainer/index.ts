@@ -1,3 +1,3 @@
-import FlightDisplayContainer from "./Flightdisplaycontainer";
+import FlightDisplayContainer from "./FlightDisplayContainer";
 
 export default FlightDisplayContainer;

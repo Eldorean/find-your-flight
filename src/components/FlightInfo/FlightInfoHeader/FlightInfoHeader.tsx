@@ -6,6 +6,7 @@ const FlightInfoHeader = () => (
       <div>FlightTag </div>
       <div>Airport</div>
       <div>date</div>
+      <div>expected time</div>
   </div>
 );
 
