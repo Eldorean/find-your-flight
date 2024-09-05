@@ -1,11 +1,12 @@
-import './App.css'
-import Test from './pages/TestingPage.tsx/Test'
+import './App.css';
+import './colors.css';
+import FindYourFlight from './pages/FindYourFlight/FindYourFlight';
 
 function App() {
 
   return (
     <>
-      <Test />
+      <FindYourFlight />
     </>
   )
 }
