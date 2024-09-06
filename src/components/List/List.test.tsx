@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import List from './List';
 import { Item } from './List.types';
 
-const MockComponent: React.FC<Item> = ({ id }) => <div>{id}</div>;
+const MockComponent: React.FC<{foo: string}> = ({ foo }) => <div>{foo}</div>;
 
 describe('List', () => {
   const items: (Item & { foo: string })[] = [
@@ -18,7 +18,7 @@ describe('List', () => {
     );
 
     items.forEach((item) => {
-      expect(container).toHaveTextContent(item.id);
+      expect(container).toHaveTextContent(item.foo);
     });
   });
 });
