@@ -8,13 +8,14 @@ it('renders flight info correctly', () => {
   const date = '2022-01-01';
   const expectedTime = '12:00';
 
-  const { getByText } = render(
+  const { container, getByText } = render(
     <FlightInfoItem
       flightNumber={flightNumber}
       flightIdentifier={flightIdentifier}
       airport={airport}
       date={date}
       expectedTime={expectedTime}
+      rowNumber={1}
     />
   );
 
@@ -23,4 +24,5 @@ it('renders flight info correctly', () => {
   expect(getByText(airport)).toBeInTheDocument();
   expect(getByText(date)).toBeInTheDocument();
   expect(getByText(expectedTime)).toBeInTheDocument();
+  expect(container.firstChild).toHaveClass('odd');
 });

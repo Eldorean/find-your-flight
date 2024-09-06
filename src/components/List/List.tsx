@@ -1,17 +1,21 @@
-type Item = {
+type Item<T> = T & {
   id: string;
 };
 
-type ListProps<T> = {
-  element: React.FC<T>
-  items: (Item & T)[];
+type Element<T> = Omit<T, 'rowNumber'> & {
+  rowNumber: number;
 };
 
-const List = <T,>({ element: Element, items }: ListProps<T>) => {
+type ListProps<T> = {
+  element: React.FC<Element<T>>
+  items: Item<T>[];
+};
+
+const List = <T,>({ element: Component, items }: ListProps<T>) => {
   return (
     <div>
-      {items.map((item) => (
-        <Element key={item.id} {...item} />
+      {items.map((item, index) => (
+        <Component key={item.id} rowNumber={index} {...item} />
       ))}
     </div>
   );

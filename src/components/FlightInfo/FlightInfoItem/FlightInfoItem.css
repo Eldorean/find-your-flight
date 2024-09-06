@@ -1,1 +1,11 @@
+.item{
+  color: var(--schiphol-blue)
+}
 
+.odd{
+  background-color: var(--dusk-blue)
+}
+
+.even{
+  background-color: var(--afternoon-blue)
+}
