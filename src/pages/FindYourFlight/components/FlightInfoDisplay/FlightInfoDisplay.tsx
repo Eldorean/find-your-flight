@@ -37,12 +37,14 @@ const FlightInfoDisplay = ({ query }: FlightInfoDisplayProps) => {
     });
   };
 
+  const showFlights = parsedFlights.length > 0;
+
   return (
     loading ? <div>Loading...</div> :
-    <>
+    showFlights ? <>
       <FlightInfoHeader onSort={handleSort} />
       <List items={parsedFlights} element={FlightInfoItem} />
-    </>
+    </> : null
   );
 };
 
