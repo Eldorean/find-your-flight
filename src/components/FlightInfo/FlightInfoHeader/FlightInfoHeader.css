@@ -2,4 +2,12 @@
   font-weight: bold;
   background-color: var(--black);
   color: var(--grey-few)
+} 
+
+.header div {
+  cursor: default;
+} 
+
+.header .clickable {
+  cursor: pointer;
 }
