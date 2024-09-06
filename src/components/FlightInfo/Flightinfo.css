@@ -8,4 +8,5 @@
 .flightInfoLayout > div{
   padding: 8px;
   border: 1px solid black;
+  cursor: default;
 }
