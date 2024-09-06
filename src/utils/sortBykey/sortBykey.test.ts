@@ -8,7 +8,7 @@ describe('sortBykey', () => {
       { name: 'Bob', age: 35 },
     ];
 
-    const sortedData = data.sort(sortBykey('age'));
+    const sortedData = data.sort(sortBykey('age', 'asc'));
 
     expect(sortedData).toEqual([
       { name: 'Alice', age: 25 },
@@ -24,7 +24,7 @@ describe('sortBykey', () => {
       { name: 'Bob', age: 35 },
     ];
 
-    const sortedData = data.sort(sortBykey('age')).reverse();
+    const sortedData = data.sort(sortBykey('age', 'desc'));
 
     expect(sortedData).toEqual([
       { name: 'Bob', age: 35 },
@@ -40,12 +40,12 @@ describe('sortBykey', () => {
       { name: 'Bob', age: 35 },
     ];
 
-    const sortedData = data.sort(sortBykey('name'));
+    const sortedData = data.sort(sortBykey('name', 'asc'));
 
     expect(sortedData).toEqual([
       { name: 'Alice', age: 25 },
       { name: 'Bob', age: 35 },
       { name: 'John', age: 30 },
     ]);
-  }); 
+  });
 });

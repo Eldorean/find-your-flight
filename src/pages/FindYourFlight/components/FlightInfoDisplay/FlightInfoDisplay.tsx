@@ -10,23 +10,38 @@ type FlightInfoDisplayProps = {
   query?: string;
 };
 
+type SortProps = {key: string, direction: 'asc' | 'desc'}
+
 const FlightInfoDisplay = ({ query }: FlightInfoDisplayProps) => {
   const {loading, value} = useAsync(fetchFlightData);
-  const [sortKey, setSortKey] = useState('');
+  const [sortKey, setSortKey] = useState<SortProps>({key: 'airport', direction: 'asc'});
 
   const parsedFlights = (
     value?.flights
     .filter(filterByAirport(query))
-    .sort(sortBykey(sortKey || 'airport'))
+    .sort(sortBykey(sortKey.key, sortKey.direction))
     .slice(0, 5)
     .map(flight => ({ id: flight.flightIdentifier, ...flight }))
-  )
+  ) || [];
+
+  const handleSort = (key: string) => {
+    const direction = (
+      sortKey.key === key && 
+      sortKey.direction === 'asc' ? 
+      'desc' : 'asc'
+    )
+    console.log(sortKey)
+    setSortKey({
+      key,
+      direction,
+    });
+  };
 
   return (
     loading ? <div>Loading...</div> :
     <>
-      <FlightInfoHeader onSort={(key)=> {setSortKey(key)}} />
-      <List items={parsedFlights || []} element={FlightInfoItem} />
+      <FlightInfoHeader onSort={handleSort} />
+      <List items={parsedFlights} element={FlightInfoItem} />
     </>
   );
 };
